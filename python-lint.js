@@ -1,4 +1,4 @@
-function python_validator(cm, updateLinting, options) {
+function python_validator(value, updateLinting, options, cm) {
     function getXmlHttp(){
         try {
             return new ActiveXObject("Msxml2.XMLHTTP");
@@ -34,5 +34,5 @@ function python_validator(cm, updateLinting, options) {
         }
     };
 
-    xmlhttp.send("code=" + encodeURIComponent(cm.getValue()));
+    xmlhttp.send("code=" + encodeURIComponent(value));
 }
