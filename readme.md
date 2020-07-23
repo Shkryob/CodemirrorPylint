@@ -1,8 +1,9 @@
-#CodeMirror + PyLint error reporting example
+# CodeMirror + PyLint error reporting example
 
 Project was done as proof of concept for CodeMirror with PyLint async code validation.
 
-##Usage
+## Usage
+
 Application requires Python https://www.python.org/
 
 To install app: 
