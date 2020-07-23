@@ -1,0 +1,60 @@
+<!doctype html>
+
+<title>CodeMirror: Linter Demo</title>
+<meta charset="utf-8"/>
+
+<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+<link rel="stylesheet" href="https://codemirror.net/addon/lint/lint.css">
+<script src="https://codemirror.net/lib/codemirror.js"></script>
+<script src="https://codemirror.net/mode/python/python.js"></script>
+<script src="https://codemirror.net/addon/lint/lint.js"></script>
+<script src="{{ url_for('static', filename='python-lint.js') }}"></script>
+
+<style type="text/css">
+  .CodeMirror {border: 1px solid black;}
+</style>
+
+<article>
+<h2>Linter Demo</h2>
+
+
+<p><textarea id="code-python">
+#!/usr/bin/env python
+
+import string
+
+shift = 3
+choice = raw_input("would you like to encode or decode?")
+word = (raw_input("Please enter text"))
+letters = string.ascii_letters + string.punctuation + string.digits
+encoded = ''
+if choice == "encode":
+    for letter in word:
+        if letter == ' ':
+            encoded = encoded + ' '
+        else:
+            x = letters.index(letter) + shift
+            encoded=encoded + letters[x]
+if choice == "decode":
+    for letter in word:
+        if letter == ' ':
+            encoded = encoded + ' '
+        else:
+            x = letters.index(letter) - shift
+            encoded = encoded + letters[x]
+
+print(encoded)
+</textarea></p>
+
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("code-python"), {
+      lineNumbers: true,
+      mode: "python",
+      gutters: ["CodeMirror-lint-markers"],
+      lint: {
+          "getAnnotations": pythonValidator,
+          "async": true,
+      }
+  });
+</script>
+</article>
