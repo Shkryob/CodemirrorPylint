@@ -18,6 +18,6 @@ export FLASK_APP=lint.py
 flask run
 ```
 
-##Example screenshot
+## Example screenshot
 
 ![example](https://raw.githubusercontent.com/Shkryob/CodemirrorPylint/master/example.png)
